@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevOps Frontend
 
-## Getting Started
+## Purpose & Technologies
 
-First, run the development server:
+A Next.js (App Router, TypeScript, Tailwind CSS) frontend built as part of a
+DevOps project. It connects to a backend REST API and displays its response,
+demonstrating a working frontend-backend integration deployed via CI/CD.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Home page with a "Check Backend" action
+- Fetches and displays the backend's root message
+- Fetches and displays the backend's current application version
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Install dependencies: `npm install`
+2. Create `.env.local` with: NEXT_PUBLIC_BACKEND_URL=http://localhost:3000
+3. Start the dev server: `npm run dev`
+4. Visit `http://localhost:3000` (or the port shown in the terminal)
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+- `NEXT_PUBLIC_BACKEND_URL` – base URL of the backend API. In production this
+  will point to `https://BACKEND_DOMAIN`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+_To be documented once the CI/CD pipeline is set up._
 
-## Deploy on Vercel
+## Live Domain
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_To be added once assigned._
