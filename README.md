@@ -26,8 +26,18 @@ demonstrating a working frontend-backend integration deployed via CI/CD.
 
 ## Deployment
 
-_To be documented once the CI/CD pipeline is set up._
+This application is automatically deployed via GitHub Actions on every push
+to the `main` branch. The workflow (`.github/workflows/deploy.yml`):
+
+1. Checks out the code
+2. Installs dependencies
+3. Builds the app as a static export (`next build` with `output: 'export'`)
+4. Copies the `out/` folder contents to the server via SCP
+5. Verifies the deployment by checking that Nginx serves the site
+
+The server uses Nginx to serve the static files directly, with HTTPS handled
+via Let's Encrypt (Certbot).
 
 ## Live Domain
 
-_To be added once assigned._
+https://muhammet-frontend.team-vit-devops.nl
