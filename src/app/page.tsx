@@ -27,20 +27,39 @@ export default function Home() {
   }
 
   return (
-    <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>DevOps Project — Frontend</h1>
-      <p>Backend connection test</p>
+    <main className="min-h-screen flex flex-col items-center justify-center gap-6 bg-gray-50 px-4">
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          DevOps Project — Frontend
+        </h1>
+        <p className="text-gray-500 mb-6">Backend connection test</p>
 
-      <button onClick={checkBackend} disabled={loading}>
-        {loading ? 'Checking...' : 'Check Backend'}
-      </button>
+        <button
+          onClick={checkBackend}
+          disabled={loading}
+          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300
+                    text-white font-medium py-2.5 px-4 rounded-lg
+                    transition-colors duration-200 cursor-pointer
+                    disabled:cursor-not-allowed"
+        >
+          {loading ? 'Checking...' : 'Check Backend'}
+        </button>
 
-      {backendMessage && <p>Backend says: {backendMessage}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        {backendMessage && (
+          <p className="mt-4 text-green-700 bg-green-50 rounded-lg py-2 px-3 text-sm">
+            Backend says: {backendMessage}
+          </p>
+        )}
+        {error && (
+          <p className="mt-4 text-red-700 bg-red-50 rounded-lg py-2 px-3 text-sm">
+            {error}
+          </p>
+        )}
 
-      <footer style={{ marginTop: '2rem', fontSize: '0.8rem', color: 'gray' }}>
-        Version: {version ?? 'Not fetched yet'}
-      </footer>
+        <footer className="mt-6 text-xs text-gray-400">
+          Version: {version ?? 'Not fetched yet'}
+        </footer>
+      </div>
     </main>
   );
 }
