@@ -58,20 +58,28 @@ export default function ReviewPage() {
   }
 
   if (loading) {
-    return <main className="min-h-screen flex items-center justify-center"><p className="text-gray-500">Loading...</p></main>;
+    return (
+      <main className="min-h-screen flex items-center justify-center bg-[var(--cream)]">
+        <p className="text-[var(--muted)]">Loading…</p>
+      </main>
+    );
   }
 
   if (dueWords.length === 0 || currentIndex >= dueWords.length) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-        <div className="text-center">
-          <p className="text-xl font-semibold text-gray-900 mb-2">
-            {dueWords.length === 0 ? 'No words due for review!' : 'Review session complete!'}
+      <main className="min-h-screen flex items-center justify-center bg-[var(--cream)] px-6">
+        <div className="max-w-sm text-center">
+          <p className="font-display text-2xl text-[var(--ink)] mb-2">
+            {dueWords.length === 0 ? 'Nothing due right now' : 'Session complete'}
           </p>
-          <p className="text-gray-500 mb-4">
-            {dueWords.length === 0 ? "Check back later." : `You reviewed ${dueWords.length} words.`}
+          <p className="text-[var(--muted)] mb-6">
+            {dueWords.length === 0
+              ? 'Come back later, or add more words to build your list.'
+              : `You reviewed ${dueWords.length} ${dueWords.length === 1 ? 'word' : 'words'}.`}
           </p>
-          <a href="/words" className="text-blue-600 hover:underline">Back to word list</a>
+          <a href="/words" className="text-[var(--rust)] hover:text-[var(--rust-dark)] font-medium">
+            Back to word list
+          </a>
         </div>
       </main>
     );
@@ -80,47 +88,49 @@ export default function ReviewPage() {
   const currentWord = dueWords[currentIndex];
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
-        <p className="text-sm text-gray-400 mb-4">
-          {currentIndex + 1} / {dueWords.length}
+    <main className="min-h-screen flex items-center justify-center bg-[var(--cream)] px-6">
+      <div className="max-w-sm w-full text-center">
+        <p className="text-sm text-[var(--muted)] mb-8">
+          {currentIndex + 1} of {dueWords.length}
         </p>
 
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <h2 className="font-display text-4xl text-[var(--ink)] mb-10">
           {currentWord.word}
         </h2>
 
         {!showAnswer ? (
           <button
             onClick={() => setShowAnswer(true)}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors"
+            className="bg-[var(--rust)] hover:bg-[var(--rust-dark)] text-[var(--cream)] font-medium py-2.5 px-6 rounded-full transition-colors"
           >
-            Show Answer
+            Show answer
           </button>
         ) : (
           <>
-            <p className="text-lg text-gray-700 mb-1">{currentWord.translationTr}</p>
-            {currentWord.translationEn && (
-              <p className="text-sm text-gray-400 mb-2">{currentWord.translationEn}</p>
-            )}
-            {currentWord.exampleSentence && (
-              <p className="text-sm text-gray-400 italic mb-6">{currentWord.exampleSentence}</p>
-            )}
+            <div className="border-t border-[var(--clay)] pt-6 mb-8">
+              <p className="text-lg text-[var(--ink)]">{currentWord.translationTr}</p>
+              {currentWord.translationEn && (
+                <p className="text-sm text-[var(--muted)] mt-1">{currentWord.translationEn}</p>
+              )}
+              {currentWord.exampleSentence && (
+                <p className="text-sm text-[var(--muted)] italic mt-3">{currentWord.exampleSentence}</p>
+              )}
+            </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 justify-center">
               <button
                 onClick={() => handleAnswer(false)}
                 disabled={submitting}
-                className="flex-1 bg-red-100 hover:bg-red-200 text-red-700 font-medium py-2.5 rounded-lg transition-colors"
+                className="border border-[var(--clay)] hover:border-[var(--rust-dark)] hover:text-[var(--rust-dark)] text-[var(--ink)] font-medium py-2 px-6 rounded-full transition-colors"
               >
-                Wrong
+                Didn&apos;t know it
               </button>
               <button
                 onClick={() => handleAnswer(true)}
                 disabled={submitting}
-                className="flex-1 bg-green-100 hover:bg-green-200 text-green-700 font-medium py-2.5 rounded-lg transition-colors"
+                className="bg-[var(--moss)] hover:opacity-90 text-[var(--cream)] font-medium py-2 px-6 rounded-full transition-colors"
               >
-                Correct
+                Knew it
               </button>
             </div>
           </>
