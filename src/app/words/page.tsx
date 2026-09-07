@@ -128,6 +128,13 @@ export default function WordsPage() {
           Dutch Vocabulary Tracker
         </h1>
 
+        <a
+          href="/words/review"
+          className="inline-block mb-6 text-sm text-blue-600 hover:underline"
+        >
+          Start Review Session →
+        </a>
+
         <form onSubmit={handleAddWord} className="bg-white rounded-xl shadow p-4 mb-6 space-y-3">
           <input
             type="text"
