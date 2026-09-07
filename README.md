@@ -41,3 +41,12 @@ via Let's Encrypt (Certbot).
 ## Live Domain
 
 https://muhammet-frontend.team-vit-devops.nl
+
+## Environments
+
+This project uses a branch-based deployment strategy:
+
+- `develop` branch → automatically deploys to the staging environment
+  (https://muhammet-staging-frontend.team-vit-devops.nl)
+- `main` branch → automatically deploys to the production environment
+  (https://muhammet-frontend.team-vit-devops.nl)
